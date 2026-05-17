@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Placement Portal</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- THEME BUTTON -->
+
+<button onclick="toggleTheme()"
+        class="theme-toggle">
+
+    🌙
+
+</button>
+
+<!-- ANIMATED BACKGROUND -->
+
+<div class="bg-animation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+<!-- HERO SECTION -->
+
+<section class="hero-section">
+
+    <!-- MAIN IMAGE -->
+
+    <img src="{{ url_for('static',
+    filename='logoo.jpeg') }}"
+    class="hero-image">
+
+    <!-- START BUTTON -->
+
+    <a href="/login"
+       class="start-btn">
+
+        Start Analysis →
+
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <h2>
+
+        AI Placement Prediction Portal
+
+    </h2>
+
+</footer>
+
+<script>
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "light-mode"
+    );
+}
+
+</script>
+
+</body>
+
+</html>

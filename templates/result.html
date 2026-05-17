@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Placement Results</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+
+<div class="bg-animation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+<!-- THEME BUTTON -->
+
+<button onclick="toggleTheme()"
+        class="theme-toggle">
+
+    🌙
+
+</button>
+
+<!-- RESULT TITLE -->
+
+<section class="result-hero">
+
+    <h1 class="result-title">
+
+        {{ name }}'s Placement Analysis
+
+    </h1>
+
+    <p class="result-subtitle">
+
+        AI Powered Placement Prediction Report
+
+    </p>
+
+</section>
+
+<!-- AI BOX -->
+
+<div class="ai-box">
+
+    <div class="ai-header">
+
+        <h2>🤖 AI Recommendation</h2>
+
+    </div>
+
+    <p class="ai-message">
+
+        {{ ai_message }}
+
+    </p>
+
+</div>
+
+<!-- SUMMARY CARDS -->
+
+<div class="summary-container">
+
+    <div class="summary-card">
+
+        <h2>{{ eligible_count }}</h2>
+
+        <p>Eligible Companies</p>
+
+    </div>
+
+    <div class="summary-card">
+
+        <h2>{{ not_eligible_count }}</h2>
+
+        <p>Not Eligible</p>
+
+    </div>
+
+    <div class="summary-card">
+
+        <h2>{{ total_companies }}</h2>
+
+        <p>Total Companies</p>
+
+    </div>
+
+</div>
+
+<!-- COMPANY RESULTS -->
+
+<div class="results-container">
+
+{% for item in results %}
+
+<div class="company-analysis-card">
+
+    <!-- COMPANY HEADER -->
+
+    <div class="company-header">
+
+        <!-- COMPANY LOGO -->
+
+        <img src="{{ url_for('static',
+        filename='logo/' + item.logo) }}"
+        class="company-logo">
+
+        <!-- COMPANY DETAILS -->
+
+        <div class="company-info">
+
+            <h2 class="company-name">
+
+                {{ item.company }}
+
+            </h2>
+
+            <h3 class="status
+            {% if 'Eligible' in item.status %}
+            eligible
+            {% else %}
+            not-eligible
+            {% endif %}">
+
+                {{ item.status }}
+
+            </h3>
+
+        </div>
+
+    </div>
+
+    <!-- REASONS -->
+
+    <div class="analysis-box">
+
+        <h4>
+
+            ❌ Reasons
+
+        </h4>
+
+        {% if item.reasons %}
+
+        <ul>
+
+            {% for r in item.reasons %}
+
+            <li>{{ r }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p class="success-text">
+
+            No issues found. Excellent profile.
+
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    <!-- RECOMMENDATIONS -->
+
+    <div class="analysis-box">
+
+        <h4>
+
+            ✅ Recommendations
+
+        </h4>
+
+        {% if item.recommendations %}
+
+        <ul>
+
+            {% for rec in item.recommendations %}
+
+            <li>{{ rec }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p class="success-text">
+
+            You are performing very well.
+
+        </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- PIE CHART -->
+
+<div class="chart-section">
+
+    <h2>
+
+        📊 Placement Eligibility Analysis
+
+    </h2>
+
+    <div class="chart-card">
+
+        <img src="{{ url_for('static',
+        filename='charts/chart.png') }}"
+        class="chart-image">
+
+    </div>
+
+</div>
+
+<!-- DOWNLOAD SECTION -->
+
+<div class="download-section">
+
+    <a href="/download"
+       class="download-btn">
+
+       ⬇ Download PDF Report
+
+    </a>
+
+</div>
+
+<!-- AI CHATBOT -->
+
+<div class="chatbot">
+
+    <div class="chatbot-header">
+
+        🤖 AI Assistant
+
+    </div>
+
+    <div class="chatbot-body">
+
+        <p>
+
+            Improve:
+
+        </p>
+
+        <ul>
+
+            <li>DSA Skills</li>
+
+            <li>Projects</li>
+
+            <li>Aptitude</li>
+
+            <li>Communication</li>
+
+            <li>Mock Interviews</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <h2>
+
+        AI Placement Prediction Portal
+
+    </h2>
+
+    <p>
+
+        Built with Flask • Python • AI • ML
+
+    </p>
+
+</footer>
+
+<!-- THEME SCRIPT -->
+
+<script>
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "light-mode"
+    );
+}
+
+</script>
+
+</body>
+
+</html>

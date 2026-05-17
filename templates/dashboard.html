@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="bg-animation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+<!-- DASHBOARD CENTER -->
+
+<div class="dashboard-page">
+
+    <!-- CARD -->
+
+    <div class="dashboard-card">
+
+        <h1 class="login-title">
+
+            Student Dashboard
+
+        </h1>
+
+        <br>
+
+       <form action="/analyze"
+              method="POST">
+
+            <input type="text"
+                   name="name"
+                   placeholder="Student Name"
+                   required>
+
+            <input type="number"
+                   step="0.1"
+                   name="cgpa"
+                   placeholder="CGPA"
+                   required>
+
+            <input type="number"
+                   name="projects"
+                   placeholder="Projects Count"
+                   required>
+
+            <input type="number"
+                   name="communication"
+                   placeholder="Communication Skills (1-10)"
+                   required>
+
+            <input type="number"
+                   name="internships"
+                   placeholder="Internships"
+                   required>
+
+            <input type="number"
+                   name="backlogs"
+                   placeholder="Backlogs"
+                   required>
+
+            <input type="text"
+                   name="skills"
+                   placeholder="Skills"
+                   required>
+
+
+            <button type="submit">
+
+                Analyze
+             <br>
+
+        <form action="/resume"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <input type="file"
+                   name="resume"
+                   required>
+
+            <button type="submit">
+
+                Upload Resume
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

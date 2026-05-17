@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="bg-animation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+<h1 class="result-title">
+
+    Admin Dashboard
+
+</h1>
+
+<div class="company-analysis-card">
+
+    <h2>
+
+        Registered Students
+
+    </h2>
+
+    <br>
+
+    {% for student in students %}
+
+        <p>
+
+            {{ student.regno }}
+            -
+            {{ student.email }}
+
+        </p>
+
+    {% endfor %}
+
+</div>
+
+<div class="company-analysis-card">
+
+    <h2>
+
+        Placement History
+
+    </h2>
+
+    <br>
+
+    {% for item in history %}
+
+        <p>
+
+            {{ item.student_name }}
+            -
+            {{ item.prediction }}
+
+        </p>
+
+    {% endfor %}
+
+</div>
+
+</body>
+
+</html>

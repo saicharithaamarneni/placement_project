@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>OTP Verification</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-center">
+
+    <div class="glass-card">
+
+        <h1 class="login-title">
+
+            Verify OTP
+
+        </h1>
+
+        <p class="subtitle">
+
+            OTP sent to your email
+
+        </p>
+
+        <form action="/verify"
+              method="POST">
+
+            <input type="hidden"
+                   name="email"
+                   value="{{ email }}">
+
+            <input type="text"
+                   name="otp"
+                   placeholder="Enter OTP"
+                   required>
+
+            <button type="submit">
+
+                Verify →
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

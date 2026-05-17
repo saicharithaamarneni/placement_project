@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- BACKGROUND ANIMATION -->
+
+<div class="bg-animation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+<!-- LOGIN SECTION -->
+
+<div class="page-center">
+
+    <div class="glass-card login-card">
+
+        <h1 class="login-title">
+
+            AI Placement Portal
+
+        </h1>
+
+        <p class="subtitle">
+
+            Login using your Email & Password
+
+        </p>
+
+        <!-- LOGIN FORM -->
+
+        <form action="/login"
+              method="POST">
+
+            <!-- EMAIL -->
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter Your Email"
+                required
+            >
+
+            <!-- PASSWORD -->
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter Your Password"
+                required
+            >
+
+            <!-- LOGIN BUTTON -->
+
+            <button type="submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+        <!-- LINKS -->
+
+        <div class="links">
+
+            <a href="/forgot">
+
+                Forgot Password?
+
+            </a>
+
+        </div>
+
+        <!-- SIGNUP -->
+
+        <p class="signup-text">
+
+            Don't have an account?
+
+            <a href="/signup">
+
+                Signup
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Report</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="result-wrapper">
+
+    <h1>Placement Analysis Report</h1>
+
+    <div class="student-card">
+
+        <h2>{{ name }}</h2>
+
+        <p>{{ regno }}</p>
+
+    </div>
+
+    <div class="eligible-section">
+
+        <h2>Eligible Companies</h2>
+
+        {% for company in eligible %}
+
+            <div class="company-card eligible-card">
+
+                {{ company }}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="not-section">
+
+        <h2>Not Eligible Companies</h2>
+
+        {% for item in not_eligible %}
+
+            <div class="company-card">
+
+                <h3>{{ item.company }}</h3>
+
+                <ul>
+
+                    {% for reason in item.reasons %}
+
+                        <li>{{ reason }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
