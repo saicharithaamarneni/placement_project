@@ -113,7 +113,7 @@ placement_project-main
 ## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/jyothi-556/placement_project.git
+git clone https://github.com/saicharithaamarneni/placement_project.git
 ```
 
 ---
@@ -229,7 +229,7 @@ Manage and monitor student data.
 
 # 👩‍💻 Author
 
-## Jyothi
+## SAI CHARITHA AMARNENI
 
 ### 🔗 GitHub Profile
 :contentReference[oaicite:0]{index=0}
