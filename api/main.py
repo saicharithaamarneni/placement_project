@@ -21,8 +21,15 @@ matplotlib.use('Agg')
 # =========================================
 # FLASK APP
 # =========================================
+import os
 
-app = Flask(__name__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "../templates"),
+    static_folder=os.path.join(BASE_DIR, "../static")
+)
 
 app.secret_key = "placement_secret_key"
 
