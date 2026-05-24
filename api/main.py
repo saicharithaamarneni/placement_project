@@ -29,16 +29,16 @@ app.secret_key = "placement_secret_key"
 # =========================================
 # DATABASE CONFIG
 # =========================================
+import os
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.db'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/students.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # =========================================
 # DATABASE
 # =========================================
-
-db = SQLAlchemy(app)
+db = SQLAlchemy()
+db.init_app(app)
 
 # =========================================
 # LOAD ML MODEL
@@ -99,9 +99,10 @@ class History(db.Model):
 # CREATE DATABASE
 # =========================================
 
-with app.app_context():
-
-    db.create_all()
+@app.before_first_request
+def create_tables():
+    with app.app_context():
+        db.create_all()
 
 # =========================================
 # COMPANY DATA
