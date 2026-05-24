@@ -15,6 +15,8 @@ from PyPDF2 import PdfReader
 
 import joblib
 import os
+import matplotlib
+matplotlib.use('Agg')
 
 # =========================================
 # FLASK APP
@@ -863,6 +865,6 @@ def logout():
 # RUN APP
 # =========================================
 
-if __name__ == "__main__":
-
-    app.run(debug=True)
+# Vercel needs this
+def handler(environ, start_response):
+    return app(environ, start_response)
