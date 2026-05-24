@@ -39,6 +39,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # =========================================
 db = SQLAlchemy()
 db.init_app(app)
+with app.app_context():
+    db.create_all()
 
 # =========================================
 # LOAD ML MODEL
@@ -99,10 +101,6 @@ class History(db.Model):
 # CREATE DATABASE
 # =========================================
 
-@app.before_first_request
-def create_tables():
-    with app.app_context():
-        db.create_all()
 
 # =========================================
 # COMPANY DATA
