@@ -225,49 +225,40 @@ Try Again
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-
     if request.method == "POST":
 
-        email = request.form["email"]
+    fullname = request.form.get("fullname")
+    email = request.form.get("email")
+    regno = request.form.get("regno")
+    password = request.form.get("password")
+    confirm_password = request.form.get("confirm_password")
 
-        regno = request.form["regno"]
+    # BASIC VALIDATION
+    if not fullname or not email or not regno or not password:
+        return "Missing required fields"
 
-        password = request.form["password"]
+    if password != confirm_password:
+        return "Passwords do not match"
 
-        existing = Student.query.filter_by(
-            email=email
-        ).first()
+    existing = Student.query.filter_by(email=email).first()
 
-        if existing:
+    if existing:
+        return "Email already exists"
 
-            return """
-
-<h2>Email Already Exists</h2>
-
-<a href='/signup'>
-Try Again
-</a>
-
-"""
-
+    try:
         student = Student(
-
             email=email,
-
             regno=regno,
-
             password=password
         )
 
         db.session.add(student)
-
         db.session.commit()
 
         return redirect("/login")
 
-    return render_template(
-        "signup.html"
-    )
+    except Exception as e:
+        return f"Signup error: {str(e)}"
 
 # =========================================
 # FORGOT PASSWORD
